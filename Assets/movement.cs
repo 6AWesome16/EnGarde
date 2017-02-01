@@ -30,11 +30,13 @@ public class movement : MonoBehaviour {
         }
         if (Input.GetKeyDown("s"))
         {
-            GetComponent<SpriteRenderer>().sprite = lunge;
+         //   GetComponent<SpriteRenderer>().sprite = lunge;
+            GetComponent<Animator>().SetBool("attacking", true);
         }
         else if(Input.GetKeyUp("s"))
         {
-            GetComponent<SpriteRenderer>().sprite = engarde;
+           // GetComponent<SpriteRenderer>().sprite = engarde;
+            GetComponent<Animator>().SetBool("attacking", false);
         }
     }
 }

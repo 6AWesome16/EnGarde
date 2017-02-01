@@ -24,11 +24,13 @@ public class movement2 : MonoBehaviour {
 
         if (Input.GetKeyDown("k"))
         {
-            GetComponent<SpriteRenderer>().sprite = lunge;
+            //GetComponent<SpriteRenderer>().sprite = lunge;
+            GetComponent<Animator>().SetBool("attacking", true);
         }
         else if (Input.GetKeyUp("k"))
         {
             GetComponent<SpriteRenderer>().sprite = engarde;
+            GetComponent<Animator>().SetBool("attacking", false);
         }
     }
 }
