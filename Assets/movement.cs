@@ -4,8 +4,9 @@ using System.Collections;
 public class movement : MonoBehaviour {
 
     float step = .5f;
-    public Sprite lunge;
-    public Sprite engarde;
+    public movement2 otherplayer;
+    public bool attacking = false;
+    public int score = 0;
 
     // Use this for initialization
     void Start () {
@@ -32,11 +33,25 @@ public class movement : MonoBehaviour {
         {
          //   GetComponent<SpriteRenderer>().sprite = lunge;
             GetComponent<Animator>().SetBool("attacking", true);
+            attacking = true;
         }
         else if(Input.GetKeyUp("s"))
         {
            // GetComponent<SpriteRenderer>().sprite = engarde;
             GetComponent<Animator>().SetBool("attacking", false);
+            attacking = false;
+        }
+    }
+    void OnTriggerEnter2D(Collider2D collisioninfo)
+    {
+        //Debug.Log("hiii");
+        if (collisioninfo.gameObject.name == "blade")
+        {
+            if (otherplayer.attacking)
+            {
+                Debug.Log("hiii");
+                otherplayer.score++;
+            }
         }
     }
 }
