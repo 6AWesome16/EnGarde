@@ -9,7 +9,7 @@ public class movement2 : MonoBehaviour {
     public bool attacking = false;
     public int score = 0;
     public Text scoretext;
-    public bool touch = false;
+    bool touch = false;
 
     // Use this for initialization
     void Start () {
@@ -57,6 +57,7 @@ public class movement2 : MonoBehaviour {
                 if (touch)
                 {
                     transform.position = new Vector3(4.6f, -2.65f);
+                    otherplayer.transform.position = new Vector3(-4.6f, -2.65f);
                 }
             }
         }  
