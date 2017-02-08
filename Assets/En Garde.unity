@@ -454,7 +454,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 711119284}
   - 212: {fileID: 711119283}
-  - 114: {fileID: 711119285}
   - 61: {fileID: 711119286}
   - 95: {fileID: 711119287}
   - 50: {fileID: 711119288}
@@ -513,21 +512,6 @@ Transform:
   - {fileID: 1062449437}
   m_Father: {fileID: 0}
   m_RootOrder: 3
---- !u!114 &711119285
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 711119282}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44fcdaa164e36b545824626990e33db4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  otherplayer: {fileID: 287995143}
-  attacking: 0
-  score: 0
-  scoretext: {fileID: 200874937}
 --- !u!61 &711119286
 BoxCollider2D:
   m_ObjectHideFlags: 0
