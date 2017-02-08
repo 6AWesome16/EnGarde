@@ -42,6 +42,11 @@ public class movement2 : MonoBehaviour {
             GetComponent<Animator>().SetBool("attacking", false);
             attacking = false;
         }
+        if (attacking == false && score > 4)
+        {
+            score = 0;
+            otherplayer.score = 0;
+        }
     }
     void OnTriggerEnter2D(Collider2D collisioninfo)
     {

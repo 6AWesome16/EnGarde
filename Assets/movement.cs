@@ -10,6 +10,7 @@ public class movement : MonoBehaviour {
     public int score = 0;
     public Text scoretext;
     bool touch = false;
+    
 
     // Use this for initialization
     void Start () {
@@ -45,6 +46,11 @@ public class movement : MonoBehaviour {
             GetComponent<Animator>().SetBool("attacking", false);
             attacking = false;
         }
+        if(attacking == false && score > 4)
+            {
+                score = 0;
+                otherplayer.score = 0;
+            }
     }
     void OnTriggerEnter2D(Collider2D collisioninfo)
     {
