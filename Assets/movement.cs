@@ -97,7 +97,7 @@ public class movement : MonoBehaviour {
                 if (touch)
                 {
                     transform.position = resetPos;
-                    otherplayer.transform.position = resetPos;
+                    otherplayer.transform.position = otherplayer.resetPos;
                 }
             }
         }
