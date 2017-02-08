@@ -329,10 +329,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e0e02221bc996f4ead0ee09028c9f1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  otherplayer: {fileID: 711119285}
+  otherplayer: {fileID: 711119289}
   attacking: 0
   score: 0
   scoretext: {fileID: 1754843347}
+  playerNumber: 1
+  resetPos: {x: -4.6, y: -2.65, z: 0}
 --- !u!61 &287995144
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -456,6 +458,7 @@ GameObject:
   - 61: {fileID: 711119286}
   - 95: {fileID: 711119287}
   - 50: {fileID: 711119288}
+  - 114: {fileID: 711119289}
   m_Layer: 0
   m_Name: p2
   m_TagString: Untagged
@@ -516,7 +519,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 711119282}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 44fcdaa164e36b545824626990e33db4, type: 3}
   m_Name: 
@@ -573,6 +576,23 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &711119289
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 711119282}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e0e02221bc996f4ead0ee09028c9f1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  otherplayer: {fileID: 287995143}
+  attacking: 0
+  score: 0
+  scoretext: {fileID: 200874937}
+  playerNumber: 2
+  resetPos: {x: 4.6, y: -2.65, z: 0}
 --- !u!1 &1062449436
 GameObject:
   m_ObjectHideFlags: 0
