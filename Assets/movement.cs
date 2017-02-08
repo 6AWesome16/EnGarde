@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class movement : MonoBehaviour {
 
@@ -7,6 +8,8 @@ public class movement : MonoBehaviour {
     public movement2 otherplayer;
     public bool attacking = false;
     public int score = 0;
+    public Text scoretext;
+    public bool touch = false;
 
     // Use this for initialization
     void Start () {
@@ -15,8 +18,9 @@ public class movement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+        scoretext.text = "points:" + score;
 
-	if(Input.GetKeyDown("d"))
+        if (Input.GetKeyDown("d"))
         {
             //Vector3 currentPos = transform.position;
             //currentPos.x += 5;
@@ -51,6 +55,11 @@ public class movement : MonoBehaviour {
             {
                 Debug.Log("hiii");
                 otherplayer.score++;
+                touch = true;
+                if (touch)
+                {
+                    transform.position = new Vector3(-4.6f, -2.65f);                
+                }
             }
         }
     }

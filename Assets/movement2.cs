@@ -9,6 +9,7 @@ public class movement2 : MonoBehaviour {
     public bool attacking = false;
     public int score = 0;
     public Text scoretext;
+    public bool touch = false;
 
     // Use this for initialization
     void Start () {
@@ -49,10 +50,14 @@ public class movement2 : MonoBehaviour {
         if (collisioninfo.gameObject.name == "blade")
         {
             if (otherplayer.attacking)
-
             {
                 Debug.Log("hiii");
                 otherplayer.score++;
+                touch = true;
+                if (touch)
+                {
+                    transform.position = new Vector3(4.6f, -2.65f);
+                }
             }
         }  
     }

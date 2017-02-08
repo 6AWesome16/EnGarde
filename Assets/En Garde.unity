@@ -122,8 +122,8 @@ RectTransform:
   m_RootOrder: 1
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 174, y: 101.5}
-  m_SizeDelta: {x: 60, y: 55}
+  m_AnchoredPosition: {x: 119.499985, y: 101.5}
+  m_SizeDelta: {x: 239, y: 55}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &200874937
 MonoBehaviour:
@@ -332,6 +332,7 @@ MonoBehaviour:
   otherplayer: {fileID: 711119285}
   attacking: 0
   score: 0
+  scoretext: {fileID: 1754843347}
 --- !u!61 &287995144
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -523,7 +524,7 @@ MonoBehaviour:
   otherplayer: {fileID: 287995143}
   attacking: 0
   score: 0
-  scoretext: {fileID: 1754843347}
+  scoretext: {fileID: 200874937}
 --- !u!61 &711119286
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -726,7 +727,7 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 10.9, y: 101.5}
+  m_AnchoredPosition: {x: -44.9, y: 101.5}
   m_SizeDelta: {x: 377.7, y: 55}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1754843347
