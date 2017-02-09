@@ -23,6 +23,7 @@ public class movement : MonoBehaviour {
         scoretext.text = "points:" + score;
         if (playerNumber == 1)
         {
+            //if(transform.position <= camera.main.aspect * camera.main.orthographicsize)
             if (Input.GetKeyDown("d"))
             {
                 //Vector3 currentPos = transform.position;
