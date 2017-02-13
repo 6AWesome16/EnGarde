@@ -14,15 +14,15 @@ public class referee : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-	// if the player moved forward first, they get right of way.
+	// if the player moved forward first, they get right of way.check
     //if point scored, point in the direction of the player who scored
     //if playernumber==1 && row == true && attacking == true--->pointscored
     //if playernumber==2 && row == true && attacking == true--->pointscored
     //if playernumber==1 &&row ==false
     //blocking would just switch right of way
     //if row == true && attacking == true, but hitboxes don't overlap, row switches
-    //when d or j is first pressed, row becomes true for that specific player
-    //when a or l are pressed right of way is ceded. if row == true, a or l pressed--->row switches
+    //when d or j is first pressed, row becomes true for that specific player. check
+    //when a or l are pressed right of way is ceded.check. if row == true, a or l pressed--->row switches.check
     if(Input.GetKeyDown("d") && !p1row && !p2row)
         {
             p1row = true;
