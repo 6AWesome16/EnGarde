@@ -58,24 +58,24 @@ public class referee : MonoBehaviour {
             p2row = false;
         }
      //attacks, basic   
-     if(p1row && !p2row && fencer1.attacking && fencer2.touch)
+     if(p1row && fencer1.attacking && fencer2.touch)
         {
             fencer2.otherplayer.score++;
             p1row = false;
             p2row = false;
         }
-     if (p2row && !p1row && fencer2.attacking && fencer1.touch)
+     if (p2row && fencer2.attacking && fencer1.touch)
         {
             fencer1.otherplayer.score++;
             p2row = false;
             p1row = false;
         }
         //counterattacks.check!
-     if (fencer1.attacking && fencer2.touch)
+     if (!p1row && fencer1.attacking && fencer2.touch)
         {
             fencer2.otherplayer.score++;
         }
-     if(fencer2.attacking && fencer1.touch)
+     if(!p2row && fencer2.attacking && fencer1.touch)
         {
             fencer1.otherplayer.score++;
         }
