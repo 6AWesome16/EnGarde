@@ -9,7 +9,7 @@ public class movement : MonoBehaviour {
     public bool attacking = false;
     public int score = 0;
     public Text scoretext;
-    bool touch = false;
+    public bool touch = false;
     public int playerNumber;
     public Vector3 resetPos;
 
@@ -93,7 +93,7 @@ public class movement : MonoBehaviour {
             if (otherplayer.attacking)
             {
                 Debug.Log("hiii");
-                otherplayer.score++;
+                //otherplayer.score++;
                 touch = true;
                 if (touch)
                 {

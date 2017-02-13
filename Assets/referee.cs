@@ -2,9 +2,11 @@
 using System.Collections;
 
 public class referee : MonoBehaviour {
-    public movement fencers;
+    public movement fencer1;
+    public movement fencer2;
     public bool p1row;
     public bool p2row;
+
     //bool true for one player but false for the other
 
 	// Use this for initialization
@@ -59,5 +61,31 @@ public class referee : MonoBehaviour {
 
      //this almost works, but both players are sharing right of way, when one retreats row is false
      //two rows? or do I need to detect both players?
-	}
+     if(p1row && !p2row && fencer1.attacking && fencer2.touch)
+        {
+            fencer2.otherplayer.score++;
+            //points are attributed properly, but needs more accuracy
+            //when a player without right of way successfully hits:
+            //no point is scored, positions reset, row resets(fixed)
+            p1row = false;
+            p2row = false;
+        }
+        if (p2row && !p1row && fencer2.attacking && fencer1.touch)
+        {
+            fencer1.otherplayer.score++;
+            p2row = false;
+            p1row = false;
+        }
+        if(fencer1.attacking || fencer2.attacking)
+        {
+            if(fencer1.touch || fencer2.touch)
+            {
+                p1row = false;
+                p2row = false;
+                fencer1.touch = false;
+                fencer2.touch = false;
+            }
+        }
+        //all these numbers are confusing. fix that
+    }
 }

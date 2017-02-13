@@ -849,7 +849,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d36e61d3c5ebfb743ab9c0628bcb81c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fencers: {fileID: 287995143}
+  fencer1: {fileID: 287995143}
+  fencer2: {fileID: 711119289}
   p1row: 0
   p2row: 0
 --- !u!1 &1871759088
