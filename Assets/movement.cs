@@ -14,6 +14,7 @@ public class movement : MonoBehaviour {
     public bool blocked = false;
     public int playerNumber;
     public Vector3 resetPos;
+    public bool flip;
 
     // Use this for initialization
     void Start () {
@@ -25,6 +26,19 @@ public class movement : MonoBehaviour {
         scoretext.text = "points:" + score;
         if (playerNumber == 1)
         {
+            //code meant to flip the sprite, hitbox and animation when you pass another player
+            if (this.transform.position.x > otherplayer.transform.position.x && !flip)
+            {
+                flip = true;
+                if (flip)
+                {
+                    Vector3 theScale = transform.localScale;
+                    theScale.x = -1;
+                    transform.localScale = theScale;
+                }
+                //keeps flipping the sprite;
+            }
+
             //if(transform.position <= camera.main.aspect * camera.main.orthographicsize)
             if (Input.GetKeyDown("d"))
             {
@@ -60,6 +74,7 @@ public class movement : MonoBehaviour {
                 GetComponent<Animator>().SetBool("blocking", false);
                 blocking = false;
             }
+
             if (attacking == false && score > 4)
             {
                 score = 0;
@@ -68,7 +83,24 @@ public class movement : MonoBehaviour {
         }
         else if(playerNumber == 2)
         {
-
+            //code meant to flip sprite and hitbox when you pass the other player
+            //if (this.transform.position.x < otherplayer.transform.position.x)
+            //{
+            //    GetComponent<SpriteRenderer>().flipX = false;
+            //}
+            //code meant to flip the sprite, hitbox and animation when you pass another player
+            if (this.transform.position.x < otherplayer.transform.position.x && !flip)
+            {
+                flip = true;
+                if (flip)
+                {
+                    Vector3 theScale = transform.localScale;
+                    theScale.x = -1;
+                    transform.localScale = theScale;
+                }
+                //keeps flipping the sprite;
+            }
+            flip = false;
             if (Input.GetKeyDown("j"))
             {
                 transform.position = new Vector3(transform.position.x - step, transform.position.y, transform.position.z);
@@ -100,6 +132,7 @@ public class movement : MonoBehaviour {
                 GetComponent<Animator>().SetBool("blocking", false);
                 blocking = false;
             }
+
             if ( score > 4)
             {
                 score = 0;
@@ -112,7 +145,17 @@ public class movement : MonoBehaviour {
         //Debug.Log("hiii");
         if (collisioninfo.gameObject.name == "blade")
         {
-            if (otherplayer.attacking)
+            if (otherplayer.blocking)
+            {
+                Debug.Log("heyyy");
+                blocked = true;
+                if (blocked)
+                {
+                    GetComponent<Animator>().SetBool("attacking", false);
+                    otherplayer.transform.position = new Vector3(transform.position.x + step*2, transform.position.y, transform.position.z);
+                }
+            }
+            if (otherplayer.attacking && !this.blocking)
             {
                 Debug.Log("hiii");
                 //otherplayer.score++;
@@ -121,17 +164,14 @@ public class movement : MonoBehaviour {
                 {
                     transform.position = resetPos;
                     otherplayer.transform.position = otherplayer.resetPos;
+                    Vector3 theScale = transform.localScale;
+                    theScale.x = 1;
+                    transform.localScale = theScale;
+                    otherplayer.transform.localScale = theScale;
+                    flip = false;
                 }
             }
-            if(otherplayer.blocking)
-            {
-                Debug.Log("heyyy");
-                blocked = true;
-                if(blocked)
-                {
-                    GetComponent<Animator>().SetBool("attacking", false);
-                }
-            }
+
         }
     }
 }
