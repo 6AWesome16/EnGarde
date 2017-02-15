@@ -11,6 +11,7 @@ public class movement : MonoBehaviour {
     public int score = 0;
     public Text scoretext;
     public bool touch = false;
+    public bool blocked = false;
     public int playerNumber;
     public Vector3 resetPos;
 
@@ -120,6 +121,15 @@ public class movement : MonoBehaviour {
                 {
                     transform.position = resetPos;
                     otherplayer.transform.position = otherplayer.resetPos;
+                }
+            }
+            if(otherplayer.blocking)
+            {
+                Debug.Log("heyyy");
+                blocked = true;
+                if(blocked)
+                {
+                    GetComponent<Animator>().SetBool("attacking", false);
                 }
             }
         }
