@@ -152,7 +152,7 @@ public class movement : MonoBehaviour {
                 if (blocked)
                 {
                     GetComponent<Animator>().SetBool("attacking", false);
-                    otherplayer.transform.position = new Vector3(transform.position.x + step*2, transform.position.y, transform.position.z);
+                    this.transform.position = new Vector3(transform.position.x + step*2, transform.position.y, transform.position.z);
                 }
             }
             if (otherplayer.attacking && !this.blocking)
