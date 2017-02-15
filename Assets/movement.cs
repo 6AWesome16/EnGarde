@@ -78,7 +78,7 @@ public class movement : MonoBehaviour {
                 GetComponent<Animator>().SetBool("attacking", false);
                 attacking = false;
             }
-            if (attacking == false && score > 4)
+            if ( score > 4)
             {
                 score = 0;
                 otherplayer.score = 0;
