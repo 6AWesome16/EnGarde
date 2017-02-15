@@ -7,6 +7,7 @@ public class movement : MonoBehaviour {
     float step = .5f;
     public movement otherplayer;
     public bool attacking = false;
+    public bool blocking = false;
     public int score = 0;
     public Text scoretext;
     public bool touch = false;
@@ -48,6 +49,16 @@ public class movement : MonoBehaviour {
                 GetComponent<Animator>().SetBool("attacking", false);
                 attacking = false;
             }
+            if(Input.GetKeyDown("w"))
+            {
+                GetComponent<Animator>().SetBool("blocking", true);
+                blocking = true;
+            }
+            else if(Input.GetKeyUp("w"))
+            {
+                GetComponent<Animator>().SetBool("blocking", false);
+                blocking = false;
+            }
             if (attacking == false && score > 4)
             {
                 score = 0;
@@ -77,6 +88,16 @@ public class movement : MonoBehaviour {
                 //GetComponent<SpriteRenderer>().sprite = engarde;
                 GetComponent<Animator>().SetBool("attacking", false);
                 attacking = false;
+            }
+            if(Input.GetKeyDown("i"))
+            {
+                GetComponent<Animator>().SetBool("blocking", true);
+                blocking = true;
+            }
+            else if(Input.GetKeyUp("i"))
+            {
+                GetComponent<Animator>().SetBool("blocking", false);
+                blocking = false;
             }
             if ( score > 4)
             {
