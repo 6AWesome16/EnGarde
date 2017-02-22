@@ -6,7 +6,8 @@ public class referee : MonoBehaviour {
     public movement fencer2;
     public bool p1row;
     public bool p2row;
-
+    public Sprite newpos;
+    public Sprite newposflip;
 	// Use this for initialization
 	void Start () {
 	
@@ -24,6 +25,15 @@ public class referee : MonoBehaviour {
     //if row == true && attacking == true, but hitboxes don't overlap, row switches****
     //when d or j is first pressed, row becomes true for that specific player. check!
     //when a or l are pressed right of way is ceded.check. if row == true, a or l pressed--->row switches.check!
+    if(p1row)
+        {
+            GetComponent<SpriteRenderer>().sprite = newposflip;
+        
+        }
+    if(p2row)
+        {
+            GetComponent<SpriteRenderer>().sprite = newpos;
+        }
     if(Input.GetKeyDown("d") && !p1row && !p2row)
         {
             p1row = true;
