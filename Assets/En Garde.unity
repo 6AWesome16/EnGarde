@@ -330,7 +330,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e0e02221bc996f4ead0ee09028c9f1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  step: 20
+  step: 10
   back: -2
   otherplayer: {fileID: 711119289}
   attacking: 0
@@ -579,7 +579,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0e0e02221bc996f4ead0ee09028c9f1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  step: 0.5
+  step: 10
   back: -2
   otherplayer: {fileID: 287995143}
   attacking: 0
