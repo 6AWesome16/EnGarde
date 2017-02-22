@@ -6,8 +6,8 @@ using UnityEngine.SceneManagement;
 
 public class movement : MonoBehaviour {
 
-    float step = .5f;
-    float back = -2.0f;
+    public float step = 1.0f;
+    public float back = -2.0f;
     public movement otherplayer;
     public bool attacking = false;
     public bool blocking = false;
@@ -29,6 +29,8 @@ public class movement : MonoBehaviour {
         scoretext.text = "points:" + score;
         if (playerNumber == 1)
         {
+            Vector3 currentpos = transform.position;
+
             //code meant to flip the sprite, hitbox and animation when you pass another player
             if (this.transform.position.x > otherplayer.transform.position.x && !flip)
             {
@@ -51,20 +53,23 @@ public class movement : MonoBehaviour {
 
             if (transform.position.x <= Camera.main.aspect * Camera.main.orthographicSize - (step * 3))
             {
-                if (Input.GetKeyDown("d"))
+                if (Input.GetKey("d"))
                 {
                     //Vector3 currentPos = transform.position;
                     //currentPos.x += 5;
                     //transform.position = currentPos;
+                    //transform.position = new Vector3(transform.position.x + step * Time.deltaTime, transform.position.y, transform.position.z);
+                    currentpos.x += step * Time.deltaTime;
 
-                    transform.position = new Vector3(transform.position.x + step, transform.position.y, transform.position.z);
                 }
             }
                 if (transform.position.x >= -Camera.main.aspect * Camera.main.orthographicSize + (step * 3))
                 {
-                    if (Input.GetKeyDown("a"))
+                    if (Input.GetKey("a"))
                     {
-                        transform.position = new Vector3(transform.position.x - step, transform.position.y, transform.position.z);
+                        currentpos.x -= step * Time.deltaTime;      
+
+                        //transform.position = new Vector3(transform.position.x - step * Time.deltaTime, transform.position.y, transform.position.z);
                     }
                 }
             
@@ -127,16 +132,16 @@ public class movement : MonoBehaviour {
             }
             if (transform.position.x >= -Camera.main.aspect * Camera.main.orthographicSize + (step * 3)) 
             {
-                if (Input.GetKeyDown("j"))
+                if (Input.GetKey("j"))
                 {
-                    transform.position = new Vector3(transform.position.x - step, transform.position.y, transform.position.z);
+                    transform.position = new Vector3(transform.position.x - step * Time.deltaTime, transform.position.y, transform.position.z);
                 }
             }
             if (transform.position.x <= Camera.main.aspect * Camera.main.orthographicSize - (step * 3))
             { 
-                if (Input.GetKeyDown("l"))
+                if (Input.GetKey("l"))
                 {
-                    transform.position = new Vector3(transform.position.x + step, transform.position.y, transform.position.z);
+                    transform.position = new Vector3(transform.position.x + step * Time.deltaTime, transform.position.y, transform.position.z);
                 }
             }
 
@@ -184,11 +189,11 @@ public class movement : MonoBehaviour {
                     GetComponent<Animator>().SetBool("attacking", false);
                     if (this.transform.position.x > otherplayer.transform.position.x)
                     {
-                        otherplayer.transform.position = new Vector3(otherplayer.transform.position.x + back, otherplayer.transform.position.y, otherplayer.transform.position.z);
+                        otherplayer.transform.position = new Vector3(otherplayer.transform.position.x + back * Time.deltaTime, otherplayer.transform.position.y, otherplayer.transform.position.z);
                     }
                     else if (this.transform.position.x < otherplayer.transform.position.x)
                     {
-                        otherplayer.transform.position = new Vector3(otherplayer.transform.position.x - back, otherplayer.transform.position.y, otherplayer.transform.position.z);
+                        otherplayer.transform.position = new Vector3(otherplayer.transform.position.x - back * Time.deltaTime, otherplayer.transform.position.y, otherplayer.transform.position.z);
                     }
                     blocked = false;
                 }
