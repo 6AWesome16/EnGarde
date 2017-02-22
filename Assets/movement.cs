@@ -150,13 +150,7 @@ public class movement : MonoBehaviour {
                 GetComponent<Animator>().SetBool("blocking", false);
                 blocking = false;
             }
-
-            if ( score > 4)
-            {
-                score = 0;
-                otherplayer.score = 0;
-            }
-            if(attacking == false && score > 4)
+            if (attacking == false && score > 4)
             {
                 SceneManager.LoadScene("Blue Wins");
                 score = 0;

@@ -9,3 +9,7 @@ EditorBuildSettings:
     path: Assets/Start screen w instr.unity
   - enabled: 1
     path: Assets/En Garde.unity
+  - enabled: 1
+    path: Assets/Red Wins.unity
+  - enabled: 1
+    path: Assets/Blue Wins.unity

@@ -9,6 +9,7 @@ public class referee : MonoBehaviour {
     public bool p2row;
     public Sprite newpos;
     public Sprite newposflip;
+    public Sprite startpos;
 	// Use this for initialization
 	void Start () {
 	
@@ -28,12 +29,15 @@ public class referee : MonoBehaviour {
     //when a or l are pressed right of way is ceded.check. if row == true, a or l pressed--->row switches.check!
     if(p1row)
         {
-            GetComponent<SpriteRenderer>().sprite = newposflip;
-        
+            GetComponent<SpriteRenderer>().sprite = newposflip;        
         }
-    if(p2row)
+    else if(p2row)
         {
             GetComponent<SpriteRenderer>().sprite = newpos;
+        }
+    else
+        {
+            GetComponent<SpriteRenderer>().sprite = startpos;
         }
     if(Input.GetKeyDown("d") && !p1row && !p2row)
         {
