@@ -49,48 +49,54 @@ public class movement : MonoBehaviour {
                 flip = false;
             }
 
-            //if(transform.position <= camera.main.aspect * camera.main.orthographicsize && transform.position >= the opposite of that)
-            if (Input.GetKeyDown("d"))
+            if (transform.position.x <= Camera.main.aspect * Camera.main.orthographicSize - (step * 3))
             {
-                //Vector3 currentPos = transform.position;
-                //currentPos.x += 5;
-                //transform.position = currentPos;
+                if (Input.GetKeyDown("d"))
+                {
+                    //Vector3 currentPos = transform.position;
+                    //currentPos.x += 5;
+                    //transform.position = currentPos;
 
-                transform.position = new Vector3(transform.position.x + step, transform.position.y, transform.position.z);
+                    transform.position = new Vector3(transform.position.x + step, transform.position.y, transform.position.z);
+                }
             }
-            if (Input.GetKeyDown("a"))
-            {
-                transform.position = new Vector3(transform.position.x - step, transform.position.y, transform.position.z);
-            }
-            if (Input.GetKeyDown("s"))
-            {
-                //   GetComponent<SpriteRenderer>().sprite = lunge;
-                GetComponent<Animator>().SetBool("attacking", true);
-                attacking = true;
-            }
-            else if (Input.GetKeyUp("s"))
-            {
-                // GetComponent<SpriteRenderer>().sprite = engarde;
-                GetComponent<Animator>().SetBool("attacking", false);
-                attacking = false;
-            }
-            if(Input.GetKeyDown("w"))
-            {
-                GetComponent<Animator>().SetBool("blocking", true);
-                blocking = true;
-            }
-            else if(Input.GetKeyUp("w"))
-            {
-                GetComponent<Animator>().SetBool("blocking", false);
-                blocking = false;
-            }
+                if (transform.position.x >= -Camera.main.aspect * Camera.main.orthographicSize + (step * 3))
+                {
+                    if (Input.GetKeyDown("a"))
+                    {
+                        transform.position = new Vector3(transform.position.x - step, transform.position.y, transform.position.z);
+                    }
+                }
+            
+                if (Input.GetKeyDown("s"))
+                {
+                    //   GetComponent<SpriteRenderer>().sprite = lunge;
+                    GetComponent<Animator>().SetBool("attacking", true);
+                    attacking = true;
+                }
+                else if (Input.GetKeyUp("s"))
+                {
+                    // GetComponent<SpriteRenderer>().sprite = engarde;
+                    GetComponent<Animator>().SetBool("attacking", false);
+                    attacking = false;
+                }
+                if (Input.GetKeyDown("w"))
+                {
+                    GetComponent<Animator>().SetBool("blocking", true);
+                    blocking = true;
+                }
+                else if (Input.GetKeyUp("w"))
+                {
+                    GetComponent<Animator>().SetBool("blocking", false);
+                    blocking = false;
+                }
 
-            if (attacking == false && score > 4)
-            {
-                score = 0;
-                otherplayer.score = 0;
-                SceneManager.LoadScene("Red Wins");
-            }
+                if (attacking == false && score > 4)
+                {
+                    score = 0;
+                    otherplayer.score = 0;
+                    SceneManager.LoadScene("Red Wins");
+                }
         }
         else if(playerNumber == 2)
         {
@@ -119,13 +125,19 @@ public class movement : MonoBehaviour {
                 transform.localScale = theScale;
                 flip = false;
             }
+            if (transform.position.x >= -Camera.main.aspect * Camera.main.orthographicSize + (step * 3)) 
+            {
                 if (Input.GetKeyDown("j"))
-            {
-                transform.position = new Vector3(transform.position.x - step, transform.position.y, transform.position.z);
+                {
+                    transform.position = new Vector3(transform.position.x - step, transform.position.y, transform.position.z);
+                }
             }
-            if (Input.GetKeyDown("l"))
-            {
-                transform.position = new Vector3(transform.position.x + step, transform.position.y, transform.position.z);
+            if (transform.position.x <= Camera.main.aspect * Camera.main.orthographicSize - (step * 3))
+            { 
+                if (Input.GetKeyDown("l"))
+                {
+                    transform.position = new Vector3(transform.position.x + step, transform.position.y, transform.position.z);
+                }
             }
 
             if (Input.GetKeyDown("k"))
