@@ -47,7 +47,7 @@ public class movement : MonoBehaviour {
                 flip = false;
             }
 
-            //if(transform.position <= camera.main.aspect * camera.main.orthographicsize)
+            //if(transform.position <= camera.main.aspect * camera.main.orthographicsize && transform.position >= the opposite of that)
             if (Input.GetKeyDown("d"))
             {
                 //Vector3 currentPos = transform.position;

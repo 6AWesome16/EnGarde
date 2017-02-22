@@ -92,6 +92,19 @@ public class referee : MonoBehaviour {
             fencer1.otherplayer.score++;
         }
 
+        //throwing away an attack 
+        //also accounts for blocking
+        if (p1row && fencer1.attacking && fencer2.touch == false)
+        {
+            p1row = false;
+            p2row = true;
+        }
+        if(p2row && fencer2.attacking && fencer1.touch == false)
+        {
+            p1row = true;
+            p2row = false;
+        }
+
 
 
         //resets.check!
@@ -102,7 +115,7 @@ public class referee : MonoBehaviour {
                 p1row = false;
                 p2row = false;
                 fencer1.touch = false;
-                fencer2.touch = false;
+                fencer2.touch = false;                
             }
         }
         //all these numbers are confusing. fix that
