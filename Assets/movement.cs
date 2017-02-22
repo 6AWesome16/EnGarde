@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
 
 public class movement : MonoBehaviour {
 
@@ -87,6 +89,7 @@ public class movement : MonoBehaviour {
             {
                 score = 0;
                 otherplayer.score = 0;
+                SceneManager.LoadScene("Red Wins");
             }
         }
         else if(playerNumber == 2)
@@ -97,6 +100,7 @@ public class movement : MonoBehaviour {
             //    GetComponent<SpriteRenderer>().flipX = false;
             //}
             //code meant to flip the sprite, hitbox and animation when you pass another player
+
             if (this.transform.position.x < otherplayer.transform.position.x && !flip)
             {
                 flip = true;
@@ -149,6 +153,12 @@ public class movement : MonoBehaviour {
 
             if ( score > 4)
             {
+                score = 0;
+                otherplayer.score = 0;
+            }
+            if(attacking == false && score > 4)
+            {
+                SceneManager.LoadScene("Blue Wins");
                 score = 0;
                 otherplayer.score = 0;
             }
