@@ -51,7 +51,7 @@ public class movement : MonoBehaviour {
                 flip = false;
             }
 
-            if (transform.position.x <= Camera.main.aspect * Camera.main.orthographicSize - (step * 3))
+            if (currentpos.x <= Camera.main.aspect * Camera.main.orthographicSize )
             {
                 if (Input.GetKey("d"))
                 {
@@ -59,19 +59,22 @@ public class movement : MonoBehaviour {
                     //currentPos.x += 5;
                     //transform.position = currentPos;
                     //transform.position = new Vector3(transform.position.x + step * Time.deltaTime, transform.position.y, transform.position.z);
+                    Debug.Log("huehue");
                     currentpos.x += step * Time.deltaTime;
+                    transform.position = currentpos;
 
                 }
             }
-                if (transform.position.x >= -Camera.main.aspect * Camera.main.orthographicSize + (step * 3))
+                if (currentpos.x >= -Camera.main.aspect * Camera.main.orthographicSize)
                 {
                     if (Input.GetKey("a"))
                     {
-                        currentpos.x -= step * Time.deltaTime;      
+                        currentpos.x -= step * Time.deltaTime;
+                    transform.position = currentpos;
 
-                        //transform.position = new Vector3(transform.position.x - step * Time.deltaTime, transform.position.y, transform.position.z);
-                    }
+                    //transform.position = new Vector3(transform.position.x - step * Time.deltaTime, transform.position.y, transform.position.z);
                 }
+            }
             
                 if (Input.GetKeyDown("s"))
                 {
@@ -111,7 +114,6 @@ public class movement : MonoBehaviour {
             //    GetComponent<SpriteRenderer>().flipX = false;
             //}
             //code meant to flip the sprite, hitbox and animation when you pass another player
-
             if (this.transform.position.x < otherplayer.transform.position.x && !flip)
             {
                 flip = true;
@@ -130,18 +132,24 @@ public class movement : MonoBehaviour {
                 transform.localScale = theScale;
                 flip = false;
             }
-            if (transform.position.x >= -Camera.main.aspect * Camera.main.orthographicSize + (step * 3)) 
+            Vector3 currentpos = transform.position;
+
+            if (currentpos.x >= -Camera.main.aspect * Camera.main.orthographicSize) 
             {
                 if (Input.GetKey("j"))
                 {
-                    transform.position = new Vector3(transform.position.x - step * Time.deltaTime, transform.position.y, transform.position.z);
+                    currentpos.x -= step * Time.deltaTime;
+                    transform.position = currentpos;
+                    //transform.position = new Vector3(transform.position.x - step * Time.deltaTime, transform.position.y, transform.position.z);
                 }
             }
-            if (transform.position.x <= Camera.main.aspect * Camera.main.orthographicSize - (step * 3))
+            if (currentpos.x <= Camera.main.aspect * Camera.main.orthographicSize)
             { 
                 if (Input.GetKey("l"))
                 {
-                    transform.position = new Vector3(transform.position.x + step * Time.deltaTime, transform.position.y, transform.position.z);
+                    currentpos.x += step * Time.deltaTime;
+                    transform.position = currentpos;
+                    //transform.position = new Vector3(transform.position.x + step * Time.deltaTime, transform.position.y, transform.position.z);
                 }
             }
 
