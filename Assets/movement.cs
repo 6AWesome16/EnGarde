@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class movement : MonoBehaviour {
 
     float step = .5f;
+    float back = -2.0f;
     public movement otherplayer;
     public bool attacking = false;
     public bool blocking = false;
@@ -37,6 +38,13 @@ public class movement : MonoBehaviour {
                     transform.localScale = theScale;
                 }
                 //keeps flipping the sprite;
+            }
+            else if (this.transform.position.x < otherplayer.transform.position.x && flip)
+            {
+                Vector3 theScale = transform.localScale;
+                theScale.x = 1;
+                transform.localScale = theScale;
+                flip = false;
             }
 
             //if(transform.position <= camera.main.aspect * camera.main.orthographicsize)
@@ -100,8 +108,14 @@ public class movement : MonoBehaviour {
                 }
                 //keeps flipping the sprite;
             }
-            flip = false;
-            if (Input.GetKeyDown("j"))
+            else if (this.transform.position.x > otherplayer.transform.position.x && flip)
+            {
+                Vector3 theScale = transform.localScale;
+                theScale.x = 1;
+                transform.localScale = theScale;
+                flip = false;
+            }
+                if (Input.GetKeyDown("j"))
             {
                 transform.position = new Vector3(transform.position.x - step, transform.position.y, transform.position.z);
             }
@@ -145,14 +159,22 @@ public class movement : MonoBehaviour {
         //Debug.Log("hiii");
         if (collisioninfo.gameObject.name == "blade")
         {
-            if (otherplayer.blocking)
+            if (otherplayer.attacking && this.blocking)
             {
                 Debug.Log("heyyy");
                 blocked = true;
                 if (blocked)
                 {
                     GetComponent<Animator>().SetBool("attacking", false);
-                    this.transform.position = new Vector3(transform.position.x + step*2, transform.position.y, transform.position.z);
+                    if (this.transform.position.x > otherplayer.transform.position.x)
+                    {
+                        otherplayer.transform.position = new Vector3(otherplayer.transform.position.x + back, otherplayer.transform.position.y, otherplayer.transform.position.z);
+                    }
+                    else if (this.transform.position.x < otherplayer.transform.position.x)
+                    {
+                        otherplayer.transform.position = new Vector3(otherplayer.transform.position.x - back, otherplayer.transform.position.y, otherplayer.transform.position.z);
+                    }
+                    blocked = false;
                 }
             }
             if (otherplayer.attacking && !this.blocking)
