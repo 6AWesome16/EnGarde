@@ -591,6 +591,49 @@ MonoBehaviour:
   playerNumber: 2
   resetPos: {x: 4.6, y: -2.65, z: 0}
   flip: 0
+--- !u!1 &798151078
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 798151080}
+  - 61: {fileID: 798151079}
+  m_Layer: 0
+  m_Name: clashbox
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!61 &798151079
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 798151078}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_Offset: {x: -0.34618837, y: -0.7056911}
+  serializedVersion: 2
+  m_Size: {x: 4.461882, y: 3.2102785}
+--- !u!4 &798151080
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 798151078}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.40511456, y: -2.0808809, z: -0.38260293}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
 --- !u!1 &1062449436
 GameObject:
   m_ObjectHideFlags: 0
@@ -994,6 +1037,7 @@ MonoBehaviour:
   newpos: {fileID: 21300000, guid: 56f1050d533ec3a429cbe9410d1b4d8f, type: 3}
   newposflip: {fileID: 21300000, guid: 85e1108310d5af04eb51a27a1a5cb385, type: 3}
   startpos: {fileID: 21300000, guid: 6fd79f4ae76333f4189a54cbc2d83fd7, type: 3}
+  slowdown: 0
 --- !u!1 &1871759088
 GameObject:
   m_ObjectHideFlags: 0

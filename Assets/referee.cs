@@ -125,33 +125,19 @@ public class referee : MonoBehaviour
         }
         //detect distance between fencers and slow down time when attacking
         //striking distance is 2.0 on the X axis
-        //works for player one
-        //nothing works
-        if (Mathf.Abs(fencer1.transform.position.x) - Mathf.Abs(fencer2.transform.position.x) <= Mathf.Abs(2.5f)
-            && Mathf.Abs(fencer1.transform.position.x) - Mathf.Abs(fencer2.transform.position.x) >= Mathf.Abs(1.5f))
-        {
-            //for player 2
-            if (fencer2.attacking || fencer1.attacking)
-            {//wait three seconds in realtime
-                Debug.Log("fairy");
-                Time.timeScale = 0.1f;
-                slowdown = true;
-                //StartCoroutine(waitThree());
-                Time.fixedDeltaTime = 0.5f;
-            }
-        }
-        else if (Mathf.Abs(fencer1.transform.position.x) - Mathf.Abs(fencer2.transform.position.x) <= Mathf.Abs(4.0f)
-            && Mathf.Abs(fencer1.transform.position.x) - Mathf.Abs(fencer2.transform.position.x) >= Mathf.Abs(3.0f))
-        {
-            if (fencer2.attacking || fencer1.attacking)
-            {//wait three seconds in realtime
-                Debug.Log("fairy");
-                Time.timeScale = 0.1f;
-                slowdown = true;
-                //StartCoroutine(waitThree());
-                Time.fixedDeltaTime = 0.5f;
-            }
-        }
+
+        //if ()
+        //{
+        //    if (fencer1.attacking || fencer2.attacking)
+        //    {//wait three seconds in realtime
+        //        Debug.Log("fairy");
+        //        Time.timeScale = 0.1f;
+        //        slowdown = true;
+        //        //StartCoroutine(waitThree());
+        //        Time.fixedDeltaTime = 0.5f;
+        //    }
+        //}
+
         else
         {
             Time.timeScale = 1.0f;
