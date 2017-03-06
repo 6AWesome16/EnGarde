@@ -75,18 +75,30 @@ public class movement : MonoBehaviour {
                     //transform.position = new Vector3(transform.position.x - step * Time.deltaTime, transform.position.y, transform.position.z);
                 }
             }
+
+            if (Input.GetKeyDown("d") || Input.GetKeyDown("e"))
+            {
+                //   GetComponent<SpriteRenderer>().sprite = lunge;
+                GetComponent<Animator>().SetBool("attacking", true);
+                attacking = true;
+            }
+            else if (Input.GetKeyUp("d") || Input.GetKeyUp("e"))
+            {
+                // GetComponent<SpriteRenderer>().sprite = engarde;
+                GetComponent<Animator>().SetBool("attacking", false);
+                attacking = false;
             
-                if (Input.GetKeyDown("d") || Input.GetKeyDown("e") || Input.GetKeyDown("c"))
+
+                if (Input.GetKeyDown("c"))
                 {
-                    //   GetComponent<SpriteRenderer>().sprite = lunge;
-                    GetComponent<Animator>().SetBool("attacking", true);
+                    GetComponent<Animator>().SetBool("attacklo", true);
                     attacking = true;
                 }
-                else if (Input.GetKeyUp("d"))
+                else if (Input.GetKeyUp("c"))
                 {
-                    // GetComponent<SpriteRenderer>().sprite = engarde;
-                    GetComponent<Animator>().SetBool("attacking", false);
-                    attacking = false;
+                    GetComponent<Animator>().SetBool("attacklo", false);
+                }
+
                 }
                 if (Input.GetKeyDown("w"))
                 {
