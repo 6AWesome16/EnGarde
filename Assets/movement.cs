@@ -53,7 +53,7 @@ public class movement : MonoBehaviour {
 
             if (currentpos.x <= Camera.main.aspect * Camera.main.orthographicSize )
             {
-                if (Input.GetKey("d"))
+                if (Input.GetKey("s"))
                 {
                     //Vector3 currentPos = transform.position;
                     //currentPos.x += 5;
@@ -76,13 +76,13 @@ public class movement : MonoBehaviour {
                 }
             }
             
-                if (Input.GetKeyDown("s"))
+                if (Input.GetKeyDown("d") || Input.GetKeyDown("e") || Input.GetKeyDown("c"))
                 {
                     //   GetComponent<SpriteRenderer>().sprite = lunge;
                     GetComponent<Animator>().SetBool("attacking", true);
                     attacking = true;
                 }
-                else if (Input.GetKeyUp("s"))
+                else if (Input.GetKeyUp("d"))
                 {
                     // GetComponent<SpriteRenderer>().sprite = engarde;
                     GetComponent<Animator>().SetBool("attacking", false);
@@ -136,7 +136,7 @@ public class movement : MonoBehaviour {
 
             if (currentpos.x >= -Camera.main.aspect * Camera.main.orthographicSize) 
             {
-                if (Input.GetKey("j"))
+                if (Input.GetKey("k"))
                 {
                     currentpos.x -= step * Time.deltaTime;
                     transform.position = currentpos;
@@ -153,13 +153,13 @@ public class movement : MonoBehaviour {
                 }
             }
 
-            if (Input.GetKeyDown("k"))
+            if (Input.GetKeyDown("j") || Input.GetKeyDown("u") || Input.GetKeyDown("n"))
             {
                 //GetComponent<SpriteRenderer>().sprite = lunge;
                 GetComponent<Animator>().SetBool("attacking", true);
                 attacking = true;
             }
-            else if (Input.GetKeyUp("k"))
+            else if (Input.GetKeyUp("j"))
             {
                 //GetComponent<SpriteRenderer>().sprite = engarde;
                 GetComponent<Animator>().SetBool("attacking", false);
