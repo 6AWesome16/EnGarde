@@ -14,9 +14,18 @@ public class referee : MonoBehaviour {
 	void Start () {
 	
 	}
-	
-	// Update is called once per frame
-	void Update () {
+    IEnumerator waitThree()
+    {
+        Debug.Log(Time.time);
+        float timeinit = Time.time;
+        yield return new WaitForSecondsRealtime(3);
+        float timeend = Time.time + 3;
+        //uhhhhh i dont know how to tackle these numbers here
+        Debug.Log(Time.time);
+    }
+    // Update is called once per frame
+    void Update () {
+
 	// if the player moved forward first, they get right of way.check!
     //if point scored, point in the direction of the player who scored.check!
     //if playernumber==1 && row == true && attacking == true--->pointscored.check!
@@ -111,17 +120,23 @@ public class referee : MonoBehaviour {
         }
         //detect distance between fencers and slow down time when attacking
         //striking distance is 2.0 on the X axis
-        if(fencer1.transform.position.x - fencer2.transform.position.x <= 1.25f && fencer1.attacking)
+        if (fencer1.transform.position.x - fencer2.transform.position.x <= 0.5f)
         {
-                        
+            if (fencer2.attacking || fencer1.attacking)
+            {//wait three seconds in realtime
+
                 Debug.Log("fairy");
-                Time.timeScale = 0.25f;
+                Time.timeScale = 0.1f;
+                //StartCoroutine(waitThree());
                 Time.fixedDeltaTime = 0.5f;
+
             }
-        else
+
+            else
             {
                 Time.timeScale = 1.0f;
             }
+        }
 
 
             //resets.check!
@@ -138,3 +153,4 @@ public class referee : MonoBehaviour {
         //all these numbers are confusing. fix that
     }
 }
+
