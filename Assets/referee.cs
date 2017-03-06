@@ -126,6 +126,7 @@ public class referee : MonoBehaviour
         //detect distance between fencers and slow down time when attacking
         //striking distance is 2.0 on the X axis
         //works for player one
+        //nothing works
         if (Mathf.Abs(fencer1.transform.position.x) - Mathf.Abs(fencer2.transform.position.x) <= Mathf.Abs(2.5f)
             && Mathf.Abs(fencer1.transform.position.x) - Mathf.Abs(fencer2.transform.position.x) >= Mathf.Abs(1.5f))
         {
