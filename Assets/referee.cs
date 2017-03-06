@@ -120,7 +120,7 @@ public class referee : MonoBehaviour {
         }
         //detect distance between fencers and slow down time when attacking
         //striking distance is 2.0 on the X axis
-        if (fencer1.transform.position.x - fencer2.transform.position.x <= 0.5f)
+        if (Mathf.Abs(fencer1.transform.position.x) - Mathf.Abs(fencer2.transform.position.x) >= 0.5f)
         {
             if (fencer2.attacking || fencer1.attacking)
             {//wait three seconds in realtime
