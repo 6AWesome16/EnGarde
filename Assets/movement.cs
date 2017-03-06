@@ -76,13 +76,13 @@ public class movement : MonoBehaviour {
                 }
             }
 
-            if (Input.GetKeyDown("d") || Input.GetKeyDown("e"))
+            if (Input.GetKeyDown("d"))
             {
                 //   GetComponent<SpriteRenderer>().sprite = lunge;
                 GetComponent<Animator>().SetBool("attacking", true);
                 attacking = true;
             }
-            else if (Input.GetKeyUp("d") || Input.GetKeyUp("e"))
+            else if (Input.GetKeyUp("d"))
             {
                 // GetComponent<SpriteRenderer>().sprite = engarde;
                 GetComponent<Animator>().SetBool("attacking", false);
@@ -98,6 +98,16 @@ public class movement : MonoBehaviour {
                     GetComponent<Animator>().SetBool("attacklo", false);
                     attacking = false;
                 }
+            if(Input.GetKeyDown("e"))
+            {
+                GetComponent<Animator>().SetBool("attackhi", true);
+                attacking = true;
+            }
+            else if(Input.GetKeyUp("e"))
+            {
+                GetComponent<Animator>().SetBool("attackhi", false);
+                attacking = false;
+            }
 
                 }
                 if (Input.GetKeyDown("w"))
