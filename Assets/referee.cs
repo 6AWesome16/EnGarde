@@ -109,7 +109,20 @@ public class referee : MonoBehaviour {
             p1row = true;
             p2row = false;
         }
-
+        //detect distance between fencers and slow down time when attacking
+        //striking distance is 2.0 on the X axis
+        if(fencer1.transform.position.x - fencer2.transform.position.x <= 3.0f && fencer1.attacking || fencer2.attacking)
+        {
+            if(Time.timeScale == 1.0f)
+            {
+                Time.timeScale = 0.5f;
+                Time.fixedDeltaTime = 0.5f;
+            }
+            else
+            {
+                Time.timeScale = 1.0f;
+            }
+        }
 
 
         //resets.check!

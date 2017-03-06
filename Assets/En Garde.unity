@@ -331,7 +331,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   step: 10
-  back: -50
+  back: -100
   otherplayer: {fileID: 711119289}
   attacking: 0
   blocking: 0
@@ -580,7 +580,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   step: 10
-  back: -50
+  back: -100
   otherplayer: {fileID: 287995143}
   attacking: 0
   blocking: 0
