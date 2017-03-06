@@ -111,22 +111,21 @@ public class referee : MonoBehaviour {
         }
         //detect distance between fencers and slow down time when attacking
         //striking distance is 2.0 on the X axis
-        if(fencer1.transform.position.x - fencer2.transform.position.x <= 3.0f && fencer1.attacking || fencer2.attacking)
+        if(fencer1.transform.position.x - fencer2.transform.position.x <= 1.25f && fencer1.attacking)
         {
-            if(Time.timeScale == 1.0f)
-            {
-                Time.timeScale = 0.5f;
+                        
+                Debug.Log("fairy");
+                Time.timeScale = 0.25f;
                 Time.fixedDeltaTime = 0.5f;
             }
-            else
+        else
             {
                 Time.timeScale = 1.0f;
             }
-        }
 
 
-        //resets.check!
-        if (fencer1.attacking || fencer2.attacking)
+            //resets.check!
+            if (fencer1.attacking || fencer2.attacking)
         {
           if(fencer1.touch || fencer2.touch)
             {
