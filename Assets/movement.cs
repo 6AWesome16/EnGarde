@@ -51,7 +51,7 @@ public class movement : MonoBehaviour {
                 flip = false;
             }
 
-            if (currentpos.x <= Camera.main.aspect * Camera.main.orthographicSize )
+            if (currentpos.x <= Camera.main.aspect * Camera.main.orthographicSize)
             {
                 if (Input.GetKey("s"))
                 {
@@ -65,17 +65,17 @@ public class movement : MonoBehaviour {
 
                 }
             }
-                if (currentpos.x >= -Camera.main.aspect * Camera.main.orthographicSize)
+            if (currentpos.x >= -Camera.main.aspect * Camera.main.orthographicSize)
+            {
+                if (Input.GetKey("a"))
                 {
-                    if (Input.GetKey("a"))
-                    {
-                        currentpos.x -= step * Time.deltaTime;
+                    currentpos.x -= step * Time.deltaTime;
                     transform.position = currentpos;
 
                     //transform.position = new Vector3(transform.position.x - step * Time.deltaTime, transform.position.y, transform.position.z);
                 }
             }
-
+            //attacking mid lo hi
             if (Input.GetKeyDown("d"))
             {
                 //   GetComponent<SpriteRenderer>().sprite = lunge;
@@ -89,46 +89,46 @@ public class movement : MonoBehaviour {
                 attacking = false;
             }
             if (Input.GetKeyDown("c"))
-                {
-                    GetComponent<Animator>().SetBool("attacklo", true);
-                    attacking = true;
-                }
-                else if (Input.GetKeyUp("c"))
-                {
-                    GetComponent<Animator>().SetBool("attacklo", false);
-                    attacking = false;
-                }
-            if(Input.GetKeyDown("e"))
+            {
+                GetComponent<Animator>().SetBool("attacklo", true);
+                attacking = true;
+            }
+            else if (Input.GetKeyUp("c"))
+            {
+                GetComponent<Animator>().SetBool("attacklo", false);
+                attacking = false;
+            }
+            if (Input.GetKeyDown("e"))
             {
                 GetComponent<Animator>().SetBool("attackhi", true);
                 attacking = true;
             }
-            else if(Input.GetKeyUp("e"))
+            else if (Input.GetKeyUp("e"))
             {
                 GetComponent<Animator>().SetBool("attackhi", false);
                 attacking = false;
             }
 
-                }
-                if (Input.GetKeyDown("w"))
-                {
-                    GetComponent<Animator>().SetBool("blocking", true);
-                    blocking = true;
-                }
-                else if (Input.GetKeyUp("w"))
-                {
-                    GetComponent<Animator>().SetBool("blocking", false);
-                    blocking = false;
-                }
+            //blocking
+            if (Input.GetKeyDown("w"))
+            {
+                GetComponent<Animator>().SetBool("blocking", true);
+                blocking = true;
+            }
+            else if (Input.GetKeyUp("w"))
+            {
+                GetComponent<Animator>().SetBool("blocking", false);
+                blocking = false;
+            }
 
-                if (attacking == false && score > 4)
-                {
-                    score = 0;
-                    otherplayer.score = 0;
-                    SceneManager.LoadScene("Red Wins");
-                }
-        
-        else if(playerNumber == 2)
+            if (attacking == false && score > 4)
+            {
+                score = 0;
+                otherplayer.score = 0;
+                SceneManager.LoadScene("Red Wins");
+            }
+        }
+        else if (playerNumber == 2)
         {
             //code meant to flip sprite and hitbox when you pass the other player
             //if (this.transform.position.x < otherplayer.transform.position.x)
@@ -156,7 +156,7 @@ public class movement : MonoBehaviour {
             }
             Vector3 currentpos = transform.position;
 
-            if (currentpos.x >= -Camera.main.aspect * Camera.main.orthographicSize) 
+            if (currentpos.x >= -Camera.main.aspect * Camera.main.orthographicSize)
             {
                 if (Input.GetKey("k"))
                 {
@@ -166,7 +166,7 @@ public class movement : MonoBehaviour {
                 }
             }
             if (currentpos.x <= Camera.main.aspect * Camera.main.orthographicSize)
-            { 
+            {
                 if (Input.GetKey("l"))
                 {
                     currentpos.x += step * Time.deltaTime;
@@ -174,8 +174,8 @@ public class movement : MonoBehaviour {
                     //transform.position = new Vector3(transform.position.x + step * Time.deltaTime, transform.position.y, transform.position.z);
                 }
             }
-
-            if (Input.GetKeyDown("j") || Input.GetKeyDown("u") || Input.GetKeyDown("n"))
+            //attacking, mid lo hi
+            if (Input.GetKeyDown("j"))
             {
                 //GetComponent<SpriteRenderer>().sprite = lunge;
                 GetComponent<Animator>().SetBool("attacking", true);
@@ -187,16 +187,38 @@ public class movement : MonoBehaviour {
                 GetComponent<Animator>().SetBool("attacking", false);
                 attacking = false;
             }
-            if(Input.GetKeyDown("i"))
+            if (Input.GetKeyDown("n"))
+            {
+                GetComponent<Animator>().SetBool("attacklo", true);
+                attacking = true;
+            }
+            else if (Input.GetKeyUp("n"))
+            {
+                GetComponent<Animator>().SetBool("attacklo", false);
+                attacking = false;
+            }
+            if (Input.GetKeyDown("u"))
+            {
+                GetComponent<Animator>().SetBool("attackhi", true);
+                attacking = true;
+            }
+            else if (Input.GetKeyUp("u"))
+            {
+                GetComponent<Animator>().SetBool("attackhi", false);
+                attacking = false;
+            }
+            //blocking
+            if (Input.GetKeyDown("i"))
             {
                 GetComponent<Animator>().SetBool("blocking", true);
                 blocking = true;
             }
-            else if(Input.GetKeyUp("i"))
+            else if (Input.GetKeyUp("i"))
             {
                 GetComponent<Animator>().SetBool("blocking", false);
                 blocking = false;
             }
+
             if (attacking == false && score > 4)
             {
                 SceneManager.LoadScene("Blue Wins");
