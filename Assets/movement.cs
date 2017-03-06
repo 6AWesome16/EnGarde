@@ -87,9 +87,8 @@ public class movement : MonoBehaviour {
                 // GetComponent<SpriteRenderer>().sprite = engarde;
                 GetComponent<Animator>().SetBool("attacking", false);
                 attacking = false;
-            
-
-                if (Input.GetKeyDown("c"))
+            }
+            if (Input.GetKeyDown("c"))
                 {
                     GetComponent<Animator>().SetBool("attacklo", true);
                     attacking = true;
@@ -97,6 +96,7 @@ public class movement : MonoBehaviour {
                 else if (Input.GetKeyUp("c"))
                 {
                     GetComponent<Animator>().SetBool("attacklo", false);
+                    attacking = false;
                 }
 
                 }
@@ -117,7 +117,7 @@ public class movement : MonoBehaviour {
                     otherplayer.score = 0;
                     SceneManager.LoadScene("Red Wins");
                 }
-        }
+        
         else if(playerNumber == 2)
         {
             //code meant to flip sprite and hitbox when you pass the other player
