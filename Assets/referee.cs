@@ -138,11 +138,11 @@ public class referee : MonoBehaviour
         //    }
         //}
 
-        else
-        {
-            Time.timeScale = 1.0f;
-            slowdown = false;
-        }
+        //else
+        //{
+        //    Time.timeScale = 1.0f;
+        //    slowdown = false;
+        //}
 
 
         //resets.check!
