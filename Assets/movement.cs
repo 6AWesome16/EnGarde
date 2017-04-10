@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class movement : MonoBehaviour {
 
-    public float step = 1.0f;
+    public float step = 0.1f;
     public float back = -2.0f;
     public movement otherplayer;
     public bool attacking = false;
@@ -60,21 +60,31 @@ public class movement : MonoBehaviour {
                     //transform.position = currentPos;
                     //transform.position = new Vector3(transform.position.x + step * Time.deltaTime, transform.position.y, transform.position.z);
                     Debug.Log("huehue");
+                    GetComponent<Animator>().SetBool("advancing", true);
                     currentpos.x += step * Time.deltaTime;
                     transform.position = currentpos;
-
+                }
+                else 
+                {
+                    GetComponent<Animator>().SetBool("advancing", false);
                 }
             }
             if (currentpos.x >= -Camera.main.aspect * Camera.main.orthographicSize)
             {
                 if (Input.GetKey("a"))
                 {
+                    GetComponent<Animator>().SetBool("retreating", true);
                     currentpos.x -= step * Time.deltaTime;
                     transform.position = currentpos;
 
                     //transform.position = new Vector3(transform.position.x - step * Time.deltaTime, transform.position.y, transform.position.z);
                 }
+                else 
+                {
+                    GetComponent<Animator>().SetBool("retreating", false);
+                }
             }
+
             //attacking mid lo hi
             if (Input.GetKeyDown("d"))
             {
@@ -90,36 +100,36 @@ public class movement : MonoBehaviour {
             }
             if (Input.GetKeyDown("c"))
             {
-                GetComponent<Animator>().SetBool("attacklo", true);
+                GetComponent<Animator>().SetBool("cross", true);
                 attacking = true;
             }
             else if (Input.GetKeyUp("c"))
             {
-                GetComponent<Animator>().SetBool("attacklo", false);
+                GetComponent<Animator>().SetBool("cross", false);
                 attacking = false;
             }
-            if (Input.GetKeyDown("e"))
-            {
-                GetComponent<Animator>().SetBool("attackhi", true);
-                attacking = true;
-            }
-            else if (Input.GetKeyUp("e"))
-            {
-                GetComponent<Animator>().SetBool("attackhi", false);
-                attacking = false;
-            }
+            //if (Input.GetKeyDown("e"))
+            //{
+            //    GetComponent<Animator>().SetBool("attackhi", true);
+            //    attacking = true;
+            //}
+            //else if (Input.GetKeyUp("e"))
+            //{
+            //    GetComponent<Animator>().SetBool("attackhi", false);
+            //    attacking = false;
+            //}
 
             //blocking
-            if (Input.GetKeyDown("w"))
-            {
-                GetComponent<Animator>().SetBool("blocking", true);
-                blocking = true;
-            }
-            else if (Input.GetKeyUp("w"))
-            {
-                GetComponent<Animator>().SetBool("blocking", false);
-                blocking = false;
-            }
+            //if (Input.GetKeyDown("w"))
+            //{
+            //    GetComponent<Animator>().SetBool("blocking", true);
+            //    blocking = true;
+            //}
+            //else if (Input.GetKeyUp("w"))
+            //{
+            //    GetComponent<Animator>().SetBool("blocking", false);
+            //    blocking = false;
+            //}
 
             if (attacking == false && score > 4)
             {
@@ -160,19 +170,30 @@ public class movement : MonoBehaviour {
             {
                 if (Input.GetKey("k"))
                 {
+                    GetComponent<Animator>().SetBool("advancing", true);
                     currentpos.x -= step * Time.deltaTime;
                     transform.position = currentpos;
                     //transform.position = new Vector3(transform.position.x - step * Time.deltaTime, transform.position.y, transform.position.z);
+                }
+                else
+                {
+                    GetComponent<Animator>().SetBool("advancing", false);
                 }
             }
             if (currentpos.x <= Camera.main.aspect * Camera.main.orthographicSize)
             {
                 if (Input.GetKey("l"))
                 {
+                    GetComponent<Animator>().SetBool("retreating", true);
                     currentpos.x += step * Time.deltaTime;
                     transform.position = currentpos;
                     //transform.position = new Vector3(transform.position.x + step * Time.deltaTime, transform.position.y, transform.position.z);
                 }
+                else
+                {
+                    GetComponent<Animator>().SetBool("retreating", false);
+                }
+                     
             }
             //attacking, mid lo hi
             if (Input.GetKeyDown("j"))
@@ -189,35 +210,35 @@ public class movement : MonoBehaviour {
             }
             if (Input.GetKeyDown("n"))
             {
-                GetComponent<Animator>().SetBool("attacklo", true);
+                GetComponent<Animator>().SetBool("cross", true);
                 attacking = true;
             }
             else if (Input.GetKeyUp("n"))
             {
-                GetComponent<Animator>().SetBool("attacklo", false);
+                GetComponent<Animator>().SetBool("cross", false);
                 attacking = false;
             }
-            if (Input.GetKeyDown("u"))
-            {
-                GetComponent<Animator>().SetBool("attackhi", true);
-                attacking = true;
-            }
-            else if (Input.GetKeyUp("u"))
-            {
-                GetComponent<Animator>().SetBool("attackhi", false);
-                attacking = false;
-            }
+            //if (Input.GetKeyDown("u"))
+            //{
+            //    GetComponent<Animator>().SetBool("attackhi", true);
+            //    attacking = true;
+            //}
+            //else if (Input.GetKeyUp("u"))
+            //{
+            //    GetComponent<Animator>().SetBool("attackhi", false);
+            //    attacking = false;
+            //}
             //blocking
-            if (Input.GetKeyDown("i"))
-            {
-                GetComponent<Animator>().SetBool("blocking", true);
-                blocking = true;
-            }
-            else if (Input.GetKeyUp("i"))
-            {
-                GetComponent<Animator>().SetBool("blocking", false);
-                blocking = false;
-            }
+            //if (Input.GetKeyDown("i"))
+            //{
+            //    GetComponent<Animator>().SetBool("blocking", true);
+            //    blocking = true;
+            //}
+            //else if (Input.GetKeyUp("i"))
+            //{
+            //    GetComponent<Animator>().SetBool("blocking", false);
+            //    blocking = false;
+            //}
 
             if (attacking == false && score > 4)
             {
