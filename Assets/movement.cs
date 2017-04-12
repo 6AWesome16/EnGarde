@@ -12,7 +12,7 @@ public class movement : MonoBehaviour {
     public bool attacking = false;
     public bool blocking = false;
     public int score = 0;
-    public Text scoretext;
+    public TextMesh scoretext;
     public bool touch = false;
     public bool blocked = false;
     public int playerNumber;
@@ -26,7 +26,7 @@ public class movement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        scoretext.text = "points:" + score;
+        scoretext.text = "" + score;
         if (playerNumber == 1)
         {
             Vector3 currentpos = transform.position;

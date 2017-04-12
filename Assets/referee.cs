@@ -12,7 +12,7 @@ public class referee : MonoBehaviour
     public Sprite newposflip;
     public Sprite startpos;
     public bool slowdown = false;
-
+    bool rowchange = false;
     // Use this for initialization
     void Start()
     {
@@ -30,7 +30,7 @@ public class referee : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        AudioSource crowd = GameObject.Find("crowdsounds").GetComponent<AudioSource>();
         // if the player moved forward first, they get right of way.check!
         //if point scored, point in the direction of the player who scored.check!
         //if playernumber==1 && row == true && attacking == true--->pointscored.check!
@@ -41,6 +41,11 @@ public class referee : MonoBehaviour
         //if row == true && attacking == true, but hitboxes don't overlap, row switches****
         //when d or j is first pressed, row becomes true for that specific player. check!
         //when a or l are pressed right of way is ceded.check. if row == true, a or l pressed--->row switches.check!
+        if(rowchange)
+        {
+            crowd.Play();
+            rowchange = false;
+        }
         if (p1row)
         {
             GetComponent<SpriteRenderer>().sprite = newposflip;
@@ -80,11 +85,13 @@ public class referee : MonoBehaviour
         {
             p1row = false;
             p2row = true;
+            rowchange = true;
         }
         if (Input.GetKeyDown("l"))
         {
             p1row = true;
             p2row = false;
+            rowchange = true;
         }
         //attacks, basic   
         if (p1row && fencer1.attacking && fencer2.touch)
@@ -117,11 +124,13 @@ public class referee : MonoBehaviour
         {
             p1row = false;
             p2row = true;
+            rowchange = true;
         }
         if (p2row && fencer2.attacking && fencer1.touch == false)
         {
             p1row = true;
             p2row = false;
+            rowchange = true;
         }
         //detect distance between fencers and slow down time when attacking
         //striking distance is 2.0 on the X axis
