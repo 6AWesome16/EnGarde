@@ -27,6 +27,8 @@ public class movement : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         scoretext.text = "" + score;
+
+        //player 1
         if (playerNumber == 1)
         {
             Vector3 currentpos = transform.position;
@@ -138,6 +140,8 @@ public class movement : MonoBehaviour {
                 SceneManager.LoadScene("Red Wins");
             }
         }
+
+        //player2
         else if (playerNumber == 2)
         {
             //code meant to flip sprite and hitbox when you pass the other player
@@ -253,6 +257,10 @@ public class movement : MonoBehaviour {
         //Debug.Log("hiii");
         if (collisioninfo.gameObject.name == "blade")
         {
+            Debug.Log("wazzap");
+            //happens whenever i attack
+            //i think it is because the animation puts them overlapping
+            //that is definitely why
             if (otherplayer.attacking && this.blocking)
             {
                 Debug.Log("heyyy");
@@ -271,6 +279,8 @@ public class movement : MonoBehaviour {
                     blocked = false;
                 }
             }
+
+            //where touch is altered
             if (otherplayer.attacking && !this.blocking)
             {
                 Debug.Log("hiii");

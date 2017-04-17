@@ -47,11 +47,13 @@ public class referee : MonoBehaviour
         }
         else
         {
-            Debug.Log("hiii");
+            //Debug.Log("hiii");
             crowd2.SetBool("cheer1", false);
             crowd1.SetBool("cheer", false);
 
         }
+
+        //switch right of way with direction of motion
         if (Input.GetKeyDown("d") && !p1row && !p2row)
         {
             p1row = true;
@@ -63,12 +65,12 @@ public class referee : MonoBehaviour
             p2row = true;
         }
         //ensures right of way stays with the one who moved first for p2
+        //"!" is meant to make it so that this only works at the first step
         if (Input.GetKeyDown("j") && !p1row && !p2row)
         {
             p1row = false;
             p2row = true;
         }
-        //"!" is meant to make it so that this only works at the first step
         else if (Input.GetKeyDown("j") && p1row)
         {
             p1row = true;
@@ -87,10 +89,15 @@ public class referee : MonoBehaviour
             p2row = false;
             rowchange = true;
         }
+
+
+
+
         //attacks, basic   
         if (p1row && fencer1.attacking && fencer2.touch)
         {
             fencer2.otherplayer.score++;
+            //instance of score
             p1row = false;
             p2row = false;
         }
@@ -98,11 +105,13 @@ public class referee : MonoBehaviour
         else if (!p1row && fencer1.attacking && fencer2.touch)
         {
             fencer2.otherplayer.score++;
+            //instance of score
         }
 
         if (p2row && fencer2.attacking && fencer1.touch)
         {
             fencer1.otherplayer.score++;
+            //instance of score
             p2row = false;
             p1row = false;
         }
@@ -110,7 +119,11 @@ public class referee : MonoBehaviour
         else if (!p2row && fencer2.attacking && fencer1.touch)
         {
             fencer1.otherplayer.score++;
+            //instance of score
         }
+
+
+
 
         //throwing away an attack 
         //also accounts for blocking
