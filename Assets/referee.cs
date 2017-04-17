@@ -8,11 +8,10 @@ public class referee : MonoBehaviour
     public movement fencer2;
     public bool p1row;
     public bool p2row;
-    public Sprite newpos;
-    public Sprite newposflip;
-    public Sprite startpos;
     public bool slowdown = false;
     bool rowchange = false;
+    public Animator crowd1;
+    public Animator crowd2;
     // Use this for initialization
     void Start()
     {
@@ -31,16 +30,6 @@ public class referee : MonoBehaviour
     void Update()
     {
         AudioSource crowd = GameObject.Find("crowdsounds").GetComponent<AudioSource>();
-        // if the player moved forward first, they get right of way.check!
-        //if point scored, point in the direction of the player who scored.check!
-        //if playernumber==1 && row == true && attacking == true--->pointscored.check!
-        //if playernumber==2 && row == true && attacking == true--->pointscored.check!
-        //if playernumber==1 &&row ==false && attacking == true--->pointscored.check!
-        //if playernumber==2 && row == false && attacking == true---> pointscored.check!
-        //blocking would just switch right of way****
-        //if row == true && attacking == true, but hitboxes don't overlap, row switches****
-        //when d or j is first pressed, row becomes true for that specific player. check!
-        //when a or l are pressed right of way is ceded.check. if row == true, a or l pressed--->row switches.check!
         if(rowchange)
         {
             crowd.Play();
@@ -48,15 +37,20 @@ public class referee : MonoBehaviour
         }
         if (p1row)
         {
-            GetComponent<SpriteRenderer>().sprite = newposflip;
+            crowd1.SetBool("cheer", true);
+            crowd2.SetBool("cheer1", false);
         }
         else if (p2row)
         {
-            GetComponent<SpriteRenderer>().sprite = newpos;
+            crowd2.SetBool("cheer1", true);
+            crowd1.SetBool("cheer", false);
         }
         else
         {
-            GetComponent<SpriteRenderer>().sprite = startpos;
+            Debug.Log("hiii");
+            crowd2.SetBool("cheer1", false);
+            crowd1.SetBool("cheer", false);
+
         }
         if (Input.GetKeyDown("d") && !p1row && !p2row)
         {

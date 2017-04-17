@@ -279,7 +279,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
 --- !u!1 &287995140
 GameObject:
   m_ObjectHideFlags: 0
@@ -906,7 +906,7 @@ Transform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
 --- !u!1 &1584015251
 GameObject:
   m_ObjectHideFlags: 0
@@ -915,6 +915,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1584015252}
+  - 114: {fileID: 1584015253}
   m_Layer: 0
   m_Name: crowds
   m_TagString: Untagged
@@ -936,7 +937,25 @@ Transform:
   - {fileID: 1796091556}
   - {fileID: 1977856854}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 7
+--- !u!114 &1584015253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1584015251}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d36e61d3c5ebfb743ab9c0628bcb81c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fencer1: {fileID: 287995143}
+  fencer2: {fileID: 711119289}
+  p1row: 0
+  p2row: 0
+  slowdown: 0
+  crowd1: {fileID: 1796091557}
+  crowd2: {fileID: 1977856855}
 --- !u!1 &1604335486
 GameObject:
   m_ObjectHideFlags: 0
@@ -1055,7 +1074,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1796091554}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.06000042, y: 2.52, z: 1}
+  m_LocalPosition: {x: -0.26, y: 2.52, z: 1}
   m_LocalScale: {x: 10, y: 9, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
@@ -1078,88 +1097,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!1 &1801643103
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 1801643105}
-  - 212: {fileID: 1801643104}
-  - 114: {fileID: 1801643106}
-  m_Layer: 0
-  m_Name: en garde pos ref
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!212 &1801643104
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1801643103}
-  m_Enabled: 0
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 0
-  m_ReflectionProbeUsage: 0
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  m_SubsetIndices: 
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_SelectedWireframeHidden: 1
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 6fd79f4ae76333f4189a54cbc2d83fd7, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
---- !u!4 &1801643105
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1801643103}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.044814244, y: 0.089629315, z: -2}
-  m_LocalScale: {x: 2, y: 2, z: 1}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
---- !u!114 &1801643106
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1801643103}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d36e61d3c5ebfb743ab9c0628bcb81c9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fencer1: {fileID: 287995143}
-  fencer2: {fileID: 711119289}
-  p1row: 0
-  p2row: 0
-  newpos: {fileID: 21300000, guid: 56f1050d533ec3a429cbe9410d1b4d8f, type: 3}
-  newposflip: {fileID: 21300000, guid: 85e1108310d5af04eb51a27a1a5cb385, type: 3}
-  startpos: {fileID: 21300000, guid: 6fd79f4ae76333f4189a54cbc2d83fd7, type: 3}
-  slowdown: 0
 --- !u!1 &1839673991
 GameObject:
   m_ObjectHideFlags: 0

@@ -275,6 +275,9 @@ public class movement : MonoBehaviour {
             {
                 Debug.Log("hiii");
                 //otherplayer.score++;
+
+                //Big touch issue is here
+                //this is the only place where touch is altered to true
                 touch = true;
                 if (touch)
                 {
