@@ -132,12 +132,7 @@ public class movement : MonoBehaviour {
             //    blocking = false;
             //}
 
-            if (attacking == false && score > 4)
-            {
-                score = 0;
-                otherplayer.score = 0;
-                SceneManager.LoadScene("Red Wins");
-            }
+
         }
 
         //player2
@@ -243,12 +238,7 @@ public class movement : MonoBehaviour {
             //    blocking = false;
             //}
 
-            if (attacking == false && score > 4)
-            {
-                SceneManager.LoadScene("Blue Wins");
-                score = 0;
-                otherplayer.score = 0;
-            }
+
         }
     }
     void OnTriggerEnter2D(Collider2D collisioninfo)

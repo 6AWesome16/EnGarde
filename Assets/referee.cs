@@ -221,8 +221,19 @@ public class referee : MonoBehaviour
                             fencer2.transform.position = fencer2.resetPos;
                             fencer2.otherplayer.transform.position = fencer2.otherplayer.resetPos;
                             fencer2.otherplayer.transform.localScale = theScale;
-                            
-                            fencingState = 0;
+                    if (score2 == 5)
+                    {
+                        score1 = 0;
+                        score2 = 0;
+                        SceneManager.LoadScene("Blue Wins");
+                    }
+                    if (score1 == 5)
+                    {
+                        score1 = 0;
+                        score2 = 0;
+                        SceneManager.LoadScene("Red Wins");
+                    }
+                    fencingState = 0;
                         }
                     }
                 }
