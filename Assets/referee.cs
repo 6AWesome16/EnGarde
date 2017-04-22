@@ -38,8 +38,23 @@ public class referee : MonoBehaviour
             if (timeUntilStart > 0)
             {
                 timeUntilStart -= Time.deltaTime;
+
                 fencer1.enabled = false;
                 fencer2.enabled = false;
+
+                fencer1.GetComponent<Animator>().enabled = true;
+                fencer2.GetComponent<Animator>().enabled = true;
+
+                fencer1.GetComponent<Animator>().SetBool("attacking", false);
+                fencer1.GetComponent<Animator>().SetBool("cross", false);
+                fencer1.GetComponent<Animator>().SetBool("advancing", false);
+                fencer1.GetComponent<Animator>().SetBool("retreating", false);
+                fencer2.GetComponent<Animator>().SetBool("attacking", false);
+                fencer2.GetComponent<Animator>().SetBool("cross", false);
+                fencer2.GetComponent<Animator>().SetBool("advancing", false);
+                fencer2.GetComponent<Animator>().SetBool("retreating", false);
+
+
                 scoretext1.transform.position = new Vector3(scoretext1.transform.position.x, scoretext1.transform.position.y, -2);
                 scoretext2.transform.position = new Vector3(scoretext2.transform.position.x, scoretext2.transform.position.y, -2);
                 Debug.Log(Mathf.FloorToInt(timeUntilStart));
@@ -47,8 +62,7 @@ public class referee : MonoBehaviour
                 {
                     fencer1.enabled = true;
                     fencer2.enabled = true;
-                    fencer1.GetComponent<Animator>().enabled = true;
-                    fencer2.GetComponent<Animator>().enabled = true;
+
                     timeUntilReset = 3f;
                     scoretext1.transform.position = new Vector3(scoretext1.transform.position.x, scoretext1.transform.position.y, scoretext1.transform.position.z + 5);
                     scoretext2.transform.position = new Vector3(scoretext2.transform.position.x, scoretext2.transform.position.y, scoretext2.transform.position.z + 5);
@@ -221,6 +235,7 @@ public class referee : MonoBehaviour
                             fencer2.transform.position = fencer2.resetPos;
                             fencer2.otherplayer.transform.position = fencer2.otherplayer.resetPos;
                             fencer2.otherplayer.transform.localScale = theScale;
+
                     if (score2 == 5)
                     {
                         score1 = 0;
