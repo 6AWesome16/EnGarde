@@ -913,6 +913,10 @@ MonoBehaviour:
   slowdown: 0
   crowd1: {fileID: 1796091557}
   crowd2: {fileID: 1977856855}
+  scoretext1: {fileID: 888197869}
+  scoretext2: {fileID: 1839673993}
+  score1: 0
+  score2: 0
 --- !u!1 &1604335486
 GameObject:
   m_ObjectHideFlags: 0

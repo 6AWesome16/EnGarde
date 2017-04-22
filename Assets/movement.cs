@@ -26,7 +26,7 @@ public class movement : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        scoretext.text = "" + score;
+        //scoretext.text = "" + score;
 
         //player 1
         if (playerNumber == 1)
@@ -61,7 +61,6 @@ public class movement : MonoBehaviour {
                     //currentPos.x += 5;
                     //transform.position = currentPos;
                     //transform.position = new Vector3(transform.position.x + step * Time.deltaTime, transform.position.y, transform.position.z);
-                    Debug.Log("huehue");
                     GetComponent<Animator>().SetBool("advancing", true);
                     currentpos.x += step * Time.deltaTime;
                     transform.position = currentpos;
@@ -254,15 +253,12 @@ public class movement : MonoBehaviour {
     }
     void OnTriggerEnter2D(Collider2D collisioninfo)
     {
-        //Debug.Log("hiii");
         if (collisioninfo.gameObject.name == "blade")
         {
-            Debug.Log("wazzap");
-            //happens whenever i attack
-            //i think it is because the animation puts them overlapping
-            //that is definitely why
+            //if blade overlaps with player hitbox
             if (otherplayer.attacking && this.blocking)
             {
+                //if attacking and you are blocking
                 Debug.Log("heyyy");
                 blocked = true;
                 if (blocked)
@@ -283,24 +279,19 @@ public class movement : MonoBehaviour {
             //where touch is altered
             if (otherplayer.attacking && !this.blocking)
             {
-                Debug.Log("hiii");
-                //otherplayer.score++;
-
-                //Big touch issue is here
-                //this is the only place where touch is altered to true
                 touch = true;
                 if (touch)
                 {
-                    transform.position = resetPos;
-                    otherplayer.transform.position = otherplayer.resetPos;
-                    Vector3 theScale = transform.localScale;
-                    theScale.x = 1;
-                    transform.localScale = theScale;
-                    otherplayer.transform.localScale = theScale;
-                    flip = false;
+                        //transform.position = resetPos;
+                        //otherplayer.transform.position = otherplayer.resetPos;
+                        //Vector3 theScale = transform.localScale;
+                        //theScale.x = 1;
+                        //transform.localScale = theScale;
+                        //otherplayer.transform.localScale = theScale;
+                        flip = false;
+                    }
                 }
             }
 
         }
     }
-}
