@@ -18,8 +18,9 @@ public class referee : MonoBehaviour
     public TextMesh scoretext2;
     public int score1 = 0;
     public int score2 = 0;
+    public TextMesh timer;
 
-    float timeUntilStart = 3f;
+    float timeUntilStart = 4f;
     float timeUntilReset = 3f;
 
     int fencingState = 0;
@@ -38,6 +39,9 @@ public class referee : MonoBehaviour
             if (timeUntilStart > 0)
             {
                 timeUntilStart -= Time.deltaTime;
+                timer.text = "" + (Mathf.FloorToInt(timeUntilStart));
+                fencer1.attacking = false;
+                fencer2.attacking = false;
 
                 fencer1.enabled = false;
                 fencer2.enabled = false;
@@ -54,12 +58,16 @@ public class referee : MonoBehaviour
                 fencer2.GetComponent<Animator>().SetBool("advancing", false);
                 fencer2.GetComponent<Animator>().SetBool("retreating", false);
 
-
                 scoretext1.transform.position = new Vector3(scoretext1.transform.position.x, scoretext1.transform.position.y, -2);
                 scoretext2.transform.position = new Vector3(scoretext2.transform.position.x, scoretext2.transform.position.y, -2);
                 Debug.Log(Mathf.FloorToInt(timeUntilStart));
-                if (timeUntilStart <= 0)
+                if(Mathf.FloorToInt(timeUntilStart) == 0)
                 {
+                    timer.text = "GO!";
+                }
+                if (timeUntilStart < 0)
+                {
+                    timer.transform.position = new Vector3(timer.transform.position.x, timer.transform.position.y, timer.transform.position.z + 5);
                     fencer1.enabled = true;
                     fencer2.enabled = true;
 
@@ -219,11 +227,12 @@ public class referee : MonoBehaviour
                         fencer2.enabled = false;
                         fencer1.GetComponent<Animator>().enabled = false;
                         fencer2.GetComponent<Animator>().enabled = false;
-                        timeUntilStart = 3f;
-                        if (timeUntilReset <= 0)
+                        timeUntilStart = 4f;
+                        if (timeUntilReset < 0)
                         {
                             fencer1.enabled = true;
                             fencer2.enabled = true;
+
 
                             fencer1.transform.position = fencer1.resetPos;
                             fencer1.otherplayer.transform.position = fencer1.otherplayer.resetPos;
@@ -235,6 +244,8 @@ public class referee : MonoBehaviour
                             fencer2.transform.position = fencer2.resetPos;
                             fencer2.otherplayer.transform.position = fencer2.otherplayer.resetPos;
                             fencer2.otherplayer.transform.localScale = theScale;
+                    timer.transform.position = new Vector3(timer.transform.position.x, timer.transform.position.y, timer.transform.position.z - 5);
+
 
                     if (score2 == 5)
                     {

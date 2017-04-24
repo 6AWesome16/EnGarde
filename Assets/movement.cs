@@ -55,7 +55,7 @@ public class movement : MonoBehaviour {
 
             if (currentpos.x <= Camera.main.aspect * Camera.main.orthographicSize)
             {
-                if (Input.GetKey("s"))
+                if (Input.GetKey("s") && attacking == false)
                 {
                     //Vector3 currentPos = transform.position;
                     //currentPos.x += 5;
@@ -72,7 +72,7 @@ public class movement : MonoBehaviour {
             }
             if (currentpos.x >= -Camera.main.aspect * Camera.main.orthographicSize)
             {
-                if (Input.GetKey("a"))
+                if (Input.GetKey("a") && attacking == false)
                 {
                     GetComponent<Animator>().SetBool("retreating", true);
                     currentpos.x -= step * Time.deltaTime;
@@ -109,16 +109,7 @@ public class movement : MonoBehaviour {
                 GetComponent<Animator>().SetBool("cross", false);
                 attacking = false;
             }
-            //if (Input.GetKeyDown("e"))
-            //{
-            //    GetComponent<Animator>().SetBool("attackhi", true);
-            //    attacking = true;
-            //}
-            //else if (Input.GetKeyUp("e"))
-            //{
-            //    GetComponent<Animator>().SetBool("attackhi", false);
-            //    attacking = false;
-            //}
+
 
             //blocking
             //if (Input.GetKeyDown("w"))
@@ -166,7 +157,7 @@ public class movement : MonoBehaviour {
 
             if (currentpos.x >= -Camera.main.aspect * Camera.main.orthographicSize)
             {
-                if (Input.GetKey("k"))
+                if (Input.GetKey("k") && attacking == false)
                 {
                     GetComponent<Animator>().SetBool("advancing", true);
                     currentpos.x -= step * Time.deltaTime;
@@ -180,7 +171,7 @@ public class movement : MonoBehaviour {
             }
             if (currentpos.x <= Camera.main.aspect * Camera.main.orthographicSize)
             {
-                if (Input.GetKey("l"))
+                if (Input.GetKey("l") && attacking == false)
                 {
                     GetComponent<Animator>().SetBool("retreating", true);
                     currentpos.x += step * Time.deltaTime;
@@ -216,23 +207,17 @@ public class movement : MonoBehaviour {
                 GetComponent<Animator>().SetBool("cross", false);
                 attacking = false;
             }
-            //if (Input.GetKeyDown("u"))
-            //{
-            //    GetComponent<Animator>().SetBool("attackhi", true);
-            //    attacking = true;
-            //}
-            //else if (Input.GetKeyUp("u"))
-            //{
-            //    GetComponent<Animator>().SetBool("attackhi", false);
-            //    attacking = false;
-            //}
+
             //blocking
-            //if (Input.GetKeyDown("i"))
+            //if (Input.GetKeyDown("n"))
+            //if d and n pressed on overlap, d is blocked
             //{
             //    GetComponent<Animator>().SetBool("blocking", true);
             //    blocking = true;
             //}
-            //else if (Input.GetKeyUp("i"))
+            //if j and c pressed on overlap, j is blocked
+            //else if (Input.GetKeyUp("j"))
+            //if j and d pressed, both are blocked
             //{
             //    GetComponent<Animator>().SetBool("blocking", false);
             //    blocking = false;
