@@ -18,6 +18,9 @@ public class movement : MonoBehaviour {
     public int playerNumber;
     public Vector3 resetPos;
     public bool flip;
+    public float knocktime;
+    public float knockpow;
+    public float knockacc;
 
     // Use this for initialization
     void Start () {
@@ -112,18 +115,34 @@ public class movement : MonoBehaviour {
 
 
             //blocking
-            //if (Input.GetKeyDown("w"))
-            //{
-            //    GetComponent<Animator>().SetBool("blocking", true);
-            //    blocking = true;
-            //}
-            //else if (Input.GetKeyUp("w"))
-            //{
-            //    GetComponent<Animator>().SetBool("blocking", false);
-            //    blocking = false;
-            //}
+            //if(playernumber == 1 && Input.getkeydown(attack) && playernumber ==2 && input.getkeydown(attack)) yeah this wouldnt work
+            //or maybe
+            //put it in the blade
+            //if blade overlap, and both have attacking as true, send to block 
 
-
+            if (GetComponent<Animator>().GetBool("block"))
+            {
+                if(knocktime > 0)
+                {
+                    if (flip)
+                    {
+                        currentpos.x = transform.position.x + knockpow * knockacc * knocktime * Time.deltaTime;
+                        transform.position = currentpos;
+                        knocktime -= Time.deltaTime;
+                    }
+                    else
+                    {
+                        currentpos.x = transform.position.x - knockpow * knockacc *knocktime * Time.deltaTime;
+                        transform.position = currentpos;
+                        knocktime -= Time.deltaTime;
+                    }
+                }
+                else if(knocktime <= 0)
+                {
+                    GetComponent<Animator>().SetBool("block", false);
+                    knocktime = .25f;
+                }
+            }
         }
 
         //player2
@@ -209,21 +228,31 @@ public class movement : MonoBehaviour {
             }
 
             //blocking
-            //if (Input.GetKeyDown("n"))
-            //if d and n pressed on overlap, d is blocked
-            //{
-            //    GetComponent<Animator>().SetBool("blocking", true);
-            //    blocking = true;
-            //}
-            //if j and c pressed on overlap, j is blocked
-            //else if (Input.GetKeyUp("j"))
-            //if j and d pressed, both are blocked
-            //{
-            //    GetComponent<Animator>().SetBool("blocking", false);
-            //    blocking = false;
-            //}
+ 
+            if (GetComponent<Animator>().GetBool("block"))
+            {
+                if (knocktime > 0)
+                {
+                    if (flip)
+                    {
+                        currentpos.x = transform.position.x - knockpow * knockacc * knocktime * Time.deltaTime;
+                        transform.position = currentpos;
+                        knocktime -= Time.deltaTime;
+                    }
+                    else
+                    {
+                        currentpos.x = transform.position.x + knockpow * knockacc * knocktime * Time.deltaTime;
+                        transform.position = currentpos;
+                        knocktime -= Time.deltaTime;
+                    }
 
-
+                }
+                else if (knocktime <= 0)
+                {
+                    GetComponent<Animator>().SetBool("block", false);
+                    knocktime = .25f;
+                }
+            }
         }
     }
     void OnTriggerEnter2D(Collider2D collisioninfo)
@@ -231,25 +260,6 @@ public class movement : MonoBehaviour {
         if (collisioninfo.gameObject.name == "blade")
         {
             //if blade overlaps with player hitbox
-            if (otherplayer.attacking && this.blocking)
-            {
-                //if attacking and you are blocking
-                Debug.Log("heyyy");
-                blocked = true;
-                if (blocked)
-                {
-                    GetComponent<Animator>().SetBool("attacking", false);
-                    if (this.transform.position.x > otherplayer.transform.position.x)
-                    {
-                        otherplayer.transform.position = new Vector3(otherplayer.transform.position.x + back * Time.deltaTime, otherplayer.transform.position.y, otherplayer.transform.position.z);
-                    }
-                    else if (this.transform.position.x < otherplayer.transform.position.x)
-                    {
-                        otherplayer.transform.position = new Vector3(otherplayer.transform.position.x - back * Time.deltaTime, otherplayer.transform.position.y, otherplayer.transform.position.z);
-                    }
-                    blocked = false;
-                }
-            }
 
             //where touch is altered
             if (otherplayer.attacking && !this.blocking)
@@ -257,16 +267,9 @@ public class movement : MonoBehaviour {
                 touch = true;
                 if (touch)
                 {
-                        //transform.position = resetPos;
-                        //otherplayer.transform.position = otherplayer.resetPos;
-                        //Vector3 theScale = transform.localScale;
-                        //theScale.x = 1;
-                        //transform.localScale = theScale;
-                        //otherplayer.transform.localScale = theScale;
                         flip = false;
                     }
                 }
             }
-
         }
     }

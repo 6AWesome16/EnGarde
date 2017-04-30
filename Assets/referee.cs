@@ -39,9 +39,13 @@ public class referee : MonoBehaviour
             if (timeUntilStart > 0)
             {
                 timeUntilStart -= Time.deltaTime;
+                timer.GetComponent<Animator>().enabled = true;
                 timer.text = "" + (Mathf.FloorToInt(timeUntilStart));
                 fencer1.attacking = false;
                 fencer2.attacking = false;
+
+                scoretext1.GetComponent<Animator>().enabled = true;
+                scoretext2.GetComponent<Animator>().enabled = true;
 
                 fencer1.enabled = false;
                 fencer2.enabled = false;
@@ -53,10 +57,12 @@ public class referee : MonoBehaviour
                 fencer1.GetComponent<Animator>().SetBool("cross", false);
                 fencer1.GetComponent<Animator>().SetBool("advancing", false);
                 fencer1.GetComponent<Animator>().SetBool("retreating", false);
+                fencer1.GetComponent<Animator>().SetBool("block", false);
                 fencer2.GetComponent<Animator>().SetBool("attacking", false);
                 fencer2.GetComponent<Animator>().SetBool("cross", false);
                 fencer2.GetComponent<Animator>().SetBool("advancing", false);
                 fencer2.GetComponent<Animator>().SetBool("retreating", false);
+                fencer2.GetComponent<Animator>().SetBool("block", false);
 
                 scoretext1.transform.position = new Vector3(scoretext1.transform.position.x, scoretext1.transform.position.y, -2);
                 scoretext2.transform.position = new Vector3(scoretext2.transform.position.x, scoretext2.transform.position.y, -2);
@@ -67,11 +73,16 @@ public class referee : MonoBehaviour
                 }
                 if (timeUntilStart < 0)
                 {
+                    timer.GetComponent<Animator>().enabled = false;
                     timer.transform.position = new Vector3(timer.transform.position.x, timer.transform.position.y, timer.transform.position.z + 5);
                     fencer1.enabled = true;
                     fencer2.enabled = true;
 
                     timeUntilReset = 3f;
+
+                    scoretext1.GetComponent<Animator>().enabled = false;
+                    scoretext2.GetComponent<Animator>().enabled = false;
+
                     scoretext1.transform.position = new Vector3(scoretext1.transform.position.x, scoretext1.transform.position.y, scoretext1.transform.position.z + 5);
                     scoretext2.transform.position = new Vector3(scoretext2.transform.position.x, scoretext2.transform.position.y, scoretext2.transform.position.z + 5);
                     fencingState = 1;
@@ -264,7 +275,6 @@ public class referee : MonoBehaviour
                     }
                 }
             }
-            //all these numbers are confusing. fix that
-        }
+}
     
 
