@@ -19,9 +19,14 @@ public class referee : MonoBehaviour
     public int score1 = 0;
     public int score2 = 0;
     public TextMesh timer;
+    public ParticleSystem score1sys;
+    public ParticleSystem score2sys;
+    public ParticleSystem redfetti;
+    public ParticleSystem bluefetti;
+    public AudioSource hitsound;
 
     float timeUntilStart = 4f;
-    float timeUntilReset = 3f;
+    float timeUntilReset = 1f;
 
     int fencingState = 0;
 
@@ -46,7 +51,8 @@ public class referee : MonoBehaviour
 
                 scoretext1.GetComponent<Animator>().enabled = true;
                 scoretext2.GetComponent<Animator>().enabled = true;
-
+                fencer1.flip = false;
+                fencer2.flip = false;
                 fencer1.enabled = false;
                 fencer2.enabled = false;
 
@@ -66,6 +72,9 @@ public class referee : MonoBehaviour
 
                 scoretext1.transform.position = new Vector3(scoretext1.transform.position.x, scoretext1.transform.position.y, -2);
                 scoretext2.transform.position = new Vector3(scoretext2.transform.position.x, scoretext2.transform.position.y, -2);
+                score1sys.transform.position = scoretext1.transform.position;
+                score2sys.transform.position = scoretext2.transform.position;
+
                 Debug.Log(Mathf.FloorToInt(timeUntilStart));
                 if(Mathf.FloorToInt(timeUntilStart) == 0)
                 {
@@ -85,6 +94,9 @@ public class referee : MonoBehaviour
 
                     scoretext1.transform.position = new Vector3(scoretext1.transform.position.x, scoretext1.transform.position.y, scoretext1.transform.position.z + 5);
                     scoretext2.transform.position = new Vector3(scoretext2.transform.position.x, scoretext2.transform.position.y, scoretext2.transform.position.z + 5);
+                    score1sys.transform.position = scoretext1.transform.position;
+                    score2sys.transform.position = scoretext2.transform.position;
+
                     fencingState = 1;
                 }
             }
@@ -203,6 +215,7 @@ public class referee : MonoBehaviour
             {
                 if (fencer1.touch || fencer2.touch)
                 {
+                    hitsound.Play();
                     p1row = false;
                     p2row = false;
                     fencer1.touch = false;
@@ -218,11 +231,23 @@ public class referee : MonoBehaviour
                         Debug.Log(Mathf.FloorToInt(timeUntilReset));
                 scoretext1.text = "" + score1;
                 scoretext2.text = "" + score2;
+                //screenshake
+
+                Vector3 pos = Camera.main.transform.localPosition;
+                pos.x = Random.insideUnitSphere.x * .1f * (timeUntilReset - Time.deltaTime);
+                pos.y = Random.insideUnitSphere.y * .1f * (timeUntilReset - Time.deltaTime);
+                Camera.main.transform.localPosition = pos;
 
                 if (p1point)
                 {
                     score1++;
                     scoretext1.transform.position = new Vector3(scoretext1.transform.position.x, scoretext1.transform.position.y, scoretext1.transform.position.z - 5);
+                    score1sys.transform.position = scoretext1.transform.position;
+                    score1sys.Play();
+                    if(score1 == 5)
+                    {
+                        redfetti.Play();
+                    }
                     //fencer1.score++;
                     p1point = false;
                 }
@@ -230,6 +255,12 @@ public class referee : MonoBehaviour
                 {
                     score2++;
                     scoretext2.transform.position = new Vector3(scoretext2.transform.position.x, scoretext2.transform.position.y, scoretext2.transform.position.z - 5);
+                    score2sys.Play();
+                    score2sys.transform.position = scoretext2.transform.position;
+                    if(score2 == 5)
+                    {
+                        bluefetti.Play();
+                    }
                     //fencer2.score++;
                     p2point = false;
                 }
@@ -260,12 +291,14 @@ public class referee : MonoBehaviour
 
                     if (score2 == 5)
                     {
+                        bluefetti.Play();
                         score1 = 0;
                         score2 = 0;
                         SceneManager.LoadScene("Blue Wins");
                     }
                     if (score1 == 5)
                     {
+                        redfetti.Play();
                         score1 = 0;
                         score2 = 0;
                         SceneManager.LoadScene("Red Wins");

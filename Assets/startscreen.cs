@@ -14,7 +14,7 @@ public class startscreen : MonoBehaviour {
 	if(Input.GetKeyUp(KeyCode.Space))
         {
             Debug.Log("hbrrbr");
-            SceneManager.LoadScene("En Garde");
+            SceneManager.LoadScene("instructions");
         }
 	}
 }

@@ -10,7 +10,6 @@ public class movement : MonoBehaviour {
     public float back = -2.0f;
     public movement otherplayer;
     public bool attacking = false;
-    public bool blocking = false;
     public int score = 0;
     public TextMesh scoretext;
     public bool touch = false;
@@ -21,6 +20,8 @@ public class movement : MonoBehaviour {
     public float knocktime;
     public float knockpow;
     public float knockacc;
+    public ParticleSystem flipper;
+    public AudioSource flippette;
 
     // Use this for initialization
     void Start () {
@@ -159,6 +160,8 @@ public class movement : MonoBehaviour {
                 flip = true;
                 if (flip)
                 {
+                    flipper.Play();
+                    flippette.Play();
                     Vector3 theScale = transform.localScale;
                     theScale.x = -1;
                     transform.localScale = theScale;
@@ -167,6 +170,8 @@ public class movement : MonoBehaviour {
             }
             else if (this.transform.position.x > otherplayer.transform.position.x && flip)
             {
+                flipper.Play();
+                flippette.Play();
                 Vector3 theScale = transform.localScale;
                 theScale.x = 1;
                 transform.localScale = theScale;
@@ -262,7 +267,7 @@ public class movement : MonoBehaviour {
             //if blade overlaps with player hitbox
 
             //where touch is altered
-            if (otherplayer.attacking && !this.blocking)
+            if (otherplayer.attacking)
             {
                 touch = true;
                 if (touch)
